@@ -1,0 +1,54 @@
+<section class="section section-components pb-0" id="section-components">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-8">
+                <div class="custom-tab-content flex-column flex-md-row">
+                    <div class="tab-content py-5 bg-secondary">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <small class="d-block text-uppercase font-weight-bold mb-3">Title</small>
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           [(ngModel)]="vacancy.title"
+                                           placeholder="Title"
+                                           type="text"
+                                           (focus)="focus=true"
+                                           (blur)="focus=false">
+                                </div>
+                                <small class="d-block text-uppercase font-weight-bold mb-3">Company</small>
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           [(ngModel)]="vacancy.company"
+                                           placeholder="Company"
+                                           type="text"
+                                           (focus)="focus=true"
+                                           (blur)="focus=false">
+                                </div>
+                                <small class="d-block text-uppercase font-weight-bold mb-3">Salary</small>
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           [(ngModel)]="vacancy.wage"
+                                           placeholder="Salary"
+                                           type="text"
+                                           (focus)="focus=true"
+                                           (blur)="focus=false">
+                                </div>
+                                <small class="d-block text-uppercase font-weight-bold mb-3">Description</small>
+                                <div class="form-group">
+                                    <textarea class="form-control col-lg-12"
+                                              style="overflow-wrap: break-word; white-space: pre-wrap;"
+                                              [value]="vacancy.description"
+                                              (input)="vacancy.description = $event.target.value;"
+                                              placeholder="Description"> </textarea>
+                                </div>
+                                <div>
+                                    <button class="btn btn-0 btn-primary btn-default" style="float: right;" (click)="createVacancy()">CREATE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

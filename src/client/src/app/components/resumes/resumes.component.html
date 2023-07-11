@@ -1,0 +1,39 @@
+<section class="section section-components pb-0" id="section-components">
+    <div class="container">
+        <div class="row justify-content-center" *ngIf="isEmpty == true">
+            <div class="col-lg-8 col-sm-8">
+                <div class="custom-tab-content flex-column flex-md-row">
+                    <div class="tab-content">
+                        <p> Seems like you have no any Resume yet</p>
+                        <div>
+                            <button class="btn btn-0 btn-primary btn-default" (click)="navigateCreateResume()">CREATE</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 mt-5 mt-lg-0" *ngIf="isEmpty == false">
+            <div *ngFor="let resume of resumes">
+                <div class="custom-tab-content flex-column flex-md-row" (click)="navigateResume(resume.id)">
+                    <div class="tab-content">
+                        <h3>{{resume.firstName}}<span style="float:right;">jklllkj</span></h3>
+                        <h6>{{resume.LastName}}</h6>
+                    </div>
+                </div>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+        <div class="custom-tab-content flex-column flex-md-row" *ngIf="isEmpty == false">
+            <div class="col-lg-8 mt-5 mt-lg-0">
+                <div class="tab-content">
+                    <div>
+                        <button class="btn btn-0 btn-primary btn-default" (click)="navigateCreateResume()">CREATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

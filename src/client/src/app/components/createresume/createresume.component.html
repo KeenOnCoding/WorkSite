@@ -1,0 +1,132 @@
+<section class="section section-components pb-0" 
+         id="section-components">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-8">
+                <div class="custom-tab-content flex-column flex-md-row">
+                    <div class="tab-content py-5 bg-secondary">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div *ngIf="isHeadEmpty">
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">First Name</small>
+                                    <div class="form-group">
+                                        <input class="form-control" [(ngModel)]="resume.firstName" placeholder="First Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">Last Name</small>
+                                    <div class="form-group">
+                                        <input class="form-control" [(ngModel)]="resume.lastName" placeholder="Last Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">Birthday</small>
+                                    <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                            </div>
+                                            <input class="form-control datepicker" [(ngModel)]="resume.birthday" placeholder="Select date" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus2=true" (blur)="focus2=false" type="text" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">Job Title</small>
+                            
+                             
+                                <div class="form-group">
+                                    <input class="form-control" [(ngModel)]="resume.jobTitle" placeholder="Job Title" type="text" (focus)="focus=true" (blur)="focus=false">
+                                </div>
+                                <div *ngFor="let workplace of resume.workplaces">
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">Company Name</small>
+                                    <div class="form-group">
+                                        <input class="form-control" [(ngModel)]="workplace.companyName" placeholder="Company Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">Industry</small>
+                                    <div class="form-group">
+                                        <input class="form-control" [(ngModel)]="workplace.industry" placeholder="Industry" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">Position</small>
+                                    <div class="form-group">
+                                        <input class="form-control" [(ngModel)]="workplace.position" placeholder="Position" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                    <div class="row" style="padding-bottom:1rem;">
+                                       
+
+
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="mb-3">
+                                                    <small class="text-uppercase font-weight-bold">Start Date</small>
+                                                </div>
+                                                <select class="form-control" 
+                                                        title="Select File Name" 
+                                                        [(ngModel)]="workplace.startMonth" 
+                                                        [ngClass]="{'focused':focus1===true}">
+                                                    <option *ngFor="let month of months">{{month.name}}</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <!--<div class="mb-3"><small class="text-uppercase font-weight-bold"></small></div>-->
+                                                <div class="mb-3">
+                                                    <div style="padding-top:1.5rem;"></div>
+                                                </div>
+                                                <select class="form-control"
+                                                        [(ngModel)]="workplace.startYear"
+                                                        [ngClass]="{'focused':focus1===true}">
+                                                    <option *ngFor="let year of years">{{year.name}}</option>
+                                                </select>
+                                            </div>
+                                      </div>
+                                  
+                                            <div class="row" style="padding-bottom:1rem;">
+
+                                                <div class="col-lg-6 col-sm-6">
+                                                    <div class="mb-3">
+                                                        <small class="text-uppercase font-weight-bold">End Date</small>
+                                                    </div>
+                                                    <select class="form-control" title="Select File Name" 
+                                                            [(ngModel)]="workplace.endMonth" [ngClass]="{'focused':focus1===true}">
+                                                        <option *ngFor="let month of months">{{month.name}}</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6">
+                                                    <div class="mb-3">
+                                                        <div style="padding-top:1.5rem;"></div>
+                                                    </div>
+                                                    <select class="form-control"
+                                                            [(ngModel)]="workplace.endYear"
+                                                            [ngClass]="{'focused':focus1===true}">
+                                                        <option *ngFor="let year of years">{{year.name}}</option>
+                                                    </select>
+                                                </div>
+
+
+
+                                            </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">PROJECT DESCRIPTION</small>
+                                    <div class="form-group">
+                                        <textarea class="form-control col-lg-12"
+                                                  placeholder="Description"
+                                                  [value]="workplace.desctiption" 
+                                                  (input)="workplace.desctiption = $event.target.value;" >
+                                        </textarea>
+                                    </div>
+                                    <small class="d-block text-uppercase font-weight-bold mb-3">RESPONSABILITIES</small>
+                                    <div class="form-group">
+                                        <textarea class="form-control col-lg-12" 
+                                                  style="overflow-wrap: break-word; white-space: pre-wrap;"
+                                                  [value]="workplace.responsabilities" 
+                                                  (input)="workplace.responsabilities = $event.target.value;" 
+                                                  placeholder="Responsabilities">
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-0 btn-primary btn-default" style="float: right;" (click)="createResume()">CREATE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
