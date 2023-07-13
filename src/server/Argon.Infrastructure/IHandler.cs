@@ -1,7 +1,6 @@
 ﻿namespace Argon.Infrastructure
 {
-    public class Class1
+    public readonly struct IHandler
     {
-
     }
 }

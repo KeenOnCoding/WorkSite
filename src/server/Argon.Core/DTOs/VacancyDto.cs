@@ -1,6 +1,6 @@
-﻿namespace Argon.Domain.Views
+﻿namespace Argon.Core.DTOs
 {
-    public class VacancyView
+    public class VacancyDto
     {
         public int Id { get; set; }
         public string? Title { get; set; }
