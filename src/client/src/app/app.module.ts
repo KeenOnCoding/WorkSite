@@ -35,6 +35,7 @@ import { AutocompleteModule } from './components/autocomplete/autocomplete.modul
 import { AutocompleteDirective } from './components/autocomplete/autocomplete.directive';
 import { AutocompleteContentDirective } from './components/autocomplete/autocomplete-content.directive';
 import { OptionComponent } from './components/autocomplete/option/option.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { OptionComponent } from './components/autocomplete/option/option.compone
     ],
     entryComponents: [AutocompleteComponent],
   imports: [
-    BrowserModule,
+      BrowserModule,
+      HttpClientModule,
       AppRoutingModule,
       BrowserModule,
       NgbModule,

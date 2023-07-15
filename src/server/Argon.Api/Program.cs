@@ -18,6 +18,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddCors(options =>
+                options.AddPolicy("AllowAll",builder => builder
+                .WithOrigins("http://192.168.0.105:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -29,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
