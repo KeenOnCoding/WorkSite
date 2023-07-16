@@ -9,7 +9,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContextPool<ApplicationDbContext>((serviceProvider, options) =>
 {
-    options.UseSqlServer(connectionString, x => x.MigrationsAssembly("Argon.Api"));
+    options.UseSqlServer(connectionString, x => x.MigrationsAssembly("Argon.Infrastructure"));
 });
 
 builder.Services.AddMediatR(typeof(IHandler).Assembly);

@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Argon.Api.Migrations
+namespace Argon.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230714070218_Initial")]
+    [Migration("20230716063448_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
