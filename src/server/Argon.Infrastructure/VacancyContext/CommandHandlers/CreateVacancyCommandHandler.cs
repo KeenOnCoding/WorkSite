@@ -1,6 +1,8 @@
 ﻿using Argon.Core;
+using Argon.Core.DTOs;
 using Argon.Core.VacancyContext.Commands;
 using Argon.Infrastructure.Data;
+using AutoMapper;
 using MediatR;
 
 namespace Argon.Infrastructure.VacancyContext.CommandHandlers
@@ -9,14 +11,17 @@ namespace Argon.Infrastructure.VacancyContext.CommandHandlers
     {
         private readonly ApplicationDbContext _context;
         private readonly IMediator _mediator;
-
+        private readonly IMapper _mapper;
         public CreateVacancyCommandHandler(
             ApplicationDbContext context, 
-            IMediator mediator)
-            => (_context, _mediator) = (context, mediator);
+            IMediator mediator,
+            IMapper mapper)
+            => (_context, _mediator, _mapper) = (context, mediator, mapper);
 
         public async Task<Unit> Handle(CreateVacancyCommand request, CancellationToken cancellationToken)
         {
+            //var map = _mapper.Map<VacancyDto>(request.Vacancy);
+
             await _context.Vacancies.AddAsync(request.Vacancy);
 
             await _context.SaveChangesAsync();

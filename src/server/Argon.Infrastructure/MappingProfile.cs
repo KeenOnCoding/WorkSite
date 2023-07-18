@@ -1,10 +1,10 @@
-﻿namespace Argon.Core.VacancyContext
+﻿namespace Argon.Infrastructure.VacancyContext
 {
     using Argon.Core.DTOs;
     using Argon.Domain.Entities;
     using AutoMapper;
 
-    internal class MappingProfile : Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {

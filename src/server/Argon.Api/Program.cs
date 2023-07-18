@@ -1,5 +1,7 @@
 using Argon.Infrastructure;
 using Argon.Infrastructure.Data;
+using Argon.Infrastructure.VacancyContext;
+using EFCoreSecondLevelCacheInterceptor;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,8 +11,20 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContextPool<ApplicationDbContext>((serviceProvider, options) =>
 {
-    options.UseSqlServer(connectionString, x => x.MigrationsAssembly("Argon.Infrastructure"));
+    options.UseSqlServer(connectionString, x => 
+    x.MigrationsAssembly("Argon.Infrastructure"))
+        .AddInterceptors(serviceProvider.GetRequiredService<SecondLevelCacheInterceptor>());
 });
+
+builder.Services.AddEFSecondLevelCache(options => {
+    options.UseMemoryCacheProvider()
+        .DisableLogging(true)
+        .UseCacheKeyPrefix("EF_");
+    //  To cache all queries  https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor
+    options.CacheAllQueries(CacheExpirationMode.Absolute, TimeSpan.FromMinutes(30));
+});
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddMediatR(typeof(IHandler).Assembly);
 
@@ -19,7 +33,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddCors(options =>
-                options.AddPolicy("AllowAll",builder => builder
+        options.AddPolicy("AllowAll",builder => builder
                 .WithOrigins("http://192.168.0.105:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader()));
