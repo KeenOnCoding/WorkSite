@@ -1,4 +1,4 @@
-﻿namespace Argon.Domain.Entities
+﻿namespace Argon.Core.Entities
 {
     public class Vacancy
     {

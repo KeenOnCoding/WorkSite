@@ -1,13 +1,12 @@
-﻿using Argon.Core.DTOs;
-using Microsoft.EntityFrameworkCore;
-
-namespace Argon.Infrastructure.Data
+﻿namespace Argon.Infrastructure.Data
 {
+    using Argon.Core.Entities;
+    using Microsoft.EntityFrameworkCore;
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<VacancyDto> Vacancies { get; set; }
+        public DbSet<Vacancy> Vacancies { get; set; }
     }
 }

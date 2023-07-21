@@ -1,7 +1,6 @@
-﻿namespace Argon.Domain.Repositories
+﻿namespace Argon.Core.Repositories
 {
-    using Argon.Domain.Entities;
-
+    using Argon.Core.Entities;
     public interface IVacancyRepository
     {
         Task<Vacancy> GetAllVacanciesAsync();
