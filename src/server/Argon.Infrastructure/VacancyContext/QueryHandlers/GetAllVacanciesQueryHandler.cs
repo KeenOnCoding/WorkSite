@@ -1,10 +1,9 @@
 ﻿namespace Argon.Infrastructure.VacancyContext.QueryHandlers
 {
     using Argon.Core;
-    using Argon.Core.DTOs;
     using Argon.Core.Entities;
     using Argon.Core.VacancyContext.Queries;
-    using Argon.Infrastructure.Data;
+    using Argon.Data;
     using AutoMapper;
     using MediatR;
     using Microsoft.EntityFrameworkCore;

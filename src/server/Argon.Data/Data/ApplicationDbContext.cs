@@ -1,4 +1,4 @@
-﻿namespace Argon.Infrastructure.Data
+﻿namespace Argon.Data
 {
     using Argon.Core.Entities;
     using Microsoft.EntityFrameworkCore;

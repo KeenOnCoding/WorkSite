@@ -1,13 +1,15 @@
-﻿using Argon.Core;
-using Argon.Core.DTOs;
-using Argon.Core.Entities;
-using Argon.Core.VacancyContext.Commands;
-using Argon.Infrastructure.Data;
-using AutoMapper;
-using MediatR;
+﻿
 
 namespace Argon.Infrastructure.VacancyContext.CommandHandlers
 {
+    using Argon.Core;
+    using Argon.Core.DTOs;
+    using Argon.Core.Entities;
+    using Argon.Core.VacancyContext.Commands;
+    using Argon.Data;
+    using AutoMapper;
+    using MediatR;
+
     public class CreateVacancyCommandHandler : ICommandHandler<CreateVacancyCommand, Unit>
     {
         private readonly ApplicationDbContext _context;

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Argon.Core\Argon.Core.csproj" />
+	  <ProjectReference Include="..\Argon.Data\Argon.Data.csproj" />
   </ItemGroup>
 
 </Project>
